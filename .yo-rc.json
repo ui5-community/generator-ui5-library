@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Geert-Jan Klaps",
+      "authorEmail": "geert-jan@klaps.org",
+      "authorUrl": "https://www.linkedin.com/in/geertjanklaps"
+    }
+  }
+}

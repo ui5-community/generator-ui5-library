@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>Example - com.librarygenerator.librarygenerator.controls</title>
+      <base href="../../../../">
+      <!--[if lte IE 9]><script type="text/javascript">
+         (function() {
+                var baseTag = document.getElementsByTagName('base')[0];
+                baseTag.href = baseTag.href;
+         })();
+      </script><![endif]-->
+      <!-- ********************************************************************** -->
+      <!-- SAPUI5 Bootstrap:                                                     -->
+      <!-- Extend the "libs" property if you like to import additional libraries  -->
+      <!-- ********************************************************************** -->
+      <script id="sap-ui-bootstrap" 
+         type="text/javascript"
+         data-sap-ui-libs="com.librarygenerator.librarygenerator"
+         src="resources/sap-ui-core.js"
+         data-sap-ui-theme="sap_belize">
+      </script>
+      
+      <script type="text/javascript"> 
+      
+         var oExample = new com.librarygenerator.librarygenerator.controls.Example({
+                         text: "Example"
+         });
+         oExample.placeAt("content");
+         
+      </script>
+   </head>
+   <body class="sapUiBody" role="application">
+      <h1 id="header">Test Page for <code>com.librarygenerator.librarygenerator.controls.Example</code></h1>
+      <div id="content"></div>
+   </body>
+</html>

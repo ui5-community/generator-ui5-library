@@ -1,0 +1,82 @@
+{
+  "name": "generator-ui5-library",
+  "version": "0.0.0",
+  "description": "Generator for UI5 libraries",
+  "homepage": "https://github.com/geert-janklaps/generator-ui5-library",
+  "author": {
+    "name": "Geert-Jan Klaps",
+    "email": "geert-jan@klaps.org",
+    "url": "https://www.linkedin.com/in/geertjanklaps"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "ui5",
+    "library",
+    "generator",
+    "yeoman-generator"
+  ],
+  "devDependencies": {
+    "yeoman-test": "^1.7.0",
+    "yeoman-assert": "^3.1.0",
+    "eslint": "^6.6.0",
+    "prettier": "^1.19.1",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.3",
+    "eslint-config-prettier": "^6.6.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-config-xo": "^0.27.2",
+    "jest": "^26.1.0"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "glob": "^7.1.6",
+    "yeoman-generator": "^2.0.1",
+    "yosay": "^2.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "xo",
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": "error"
+    },
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "scripts": {
+    "pretest": "eslint .",
+    "test": "jest"
+  },
+  "repository": "https://github.com/geert-janklaps/generator-ui5-library.git",
+  "license": "MIT"
+}
