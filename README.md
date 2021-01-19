@@ -1,19 +1,19 @@
-# generator-ui-5-library [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-ui-5-library
 > Generator for UI5 libraries
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-ui-5-library using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-ui5-library using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
-npm install -g generator-ui-5-library
+npm install -g generator-ui5-library
 ```
 
 Then generate your new project:
 
 ```bash
-yo ui-5-library
+yo ui5-library
 ```
 
 ## Getting To Know Yeoman
@@ -26,11 +26,3 @@ yo ui-5-library
 ## License
 
 MIT © [Geert-Jan Klaps]()
-
-
-[npm-image]: https://badge.fury.io/js/generator-ui-5-library.svg
-[npm-url]: https://npmjs.org/package/generator-ui-5-library
-[travis-image]: https://travis-ci.com/geert-janklaps/generator-ui-5-library.svg?branch=master
-[travis-url]: https://travis-ci.com/geert-janklaps/generator-ui-5-library
-[daviddm-image]: https://david-dm.org/geert-janklaps/generator-ui-5-library.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/geert-janklaps/generator-ui-5-library
