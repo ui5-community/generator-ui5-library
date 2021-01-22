@@ -2,13 +2,13 @@
 	"_version": "1.12.0",
 
 	"sap.app": {
-		"id": "com.librarygenerator.librarygenerator",
+		"id": "<%= librarynamespace %>",
 		"type": "library",
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		"title": "Library Generator",
-		"description": "Library Generator",
+		"title": "<%= libraryname %>",
+		"description": "<%= libraryname %>",
 		"ach": "",
 		"offline": true
 	},
@@ -35,7 +35,7 @@
 			"i18n": "messagebundle.properties",
 			"css": true,
 			"content": {
-				"controls": ["com.librarygenerator.librarygenerator.Example"],
+				"controls": ["<%= librarynamespace %>.Example"],
 				"elements": [],
 				"types": [],
 				"interfaces": []

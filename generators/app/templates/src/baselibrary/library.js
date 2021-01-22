@@ -3,7 +3,7 @@
  */
 
 /**
- * Initialization Code and shared classes of library com.librarygenerator.librarygenerator.
+ * Initialization Code and shared classes of library <%= librarynamespace %>.
  */
 sap.ui.define(["sap/ui/core/library"], // library dependency
 	function () {
@@ -14,7 +14,7 @@ sap.ui.define(["sap/ui/core/library"], // library dependency
 		 * Library Generator
 		 *
 		 * @namespace
-		 * @name com.librarygenerator.librarygenerator
+		 * @name <%= librarynamespace %>
 		 * @author SAP SE
 		 * @version 1.0.0
 		 * @public
@@ -22,19 +22,19 @@ sap.ui.define(["sap/ui/core/library"], // library dependency
 
 		// delegate further initialization of this library to the Core
 		sap.ui.getCore().initLibrary({
-			name: "com.librarygenerator.librarygenerator",
+			name: "<%= librarynamespace %>",
 			version: "1.0.0",
 			dependencies: ["sap.ui.core"],
 			types: [],
 			interfaces: [],
 			controls: [
-				"com.librarygenerator.librarygenerator.controls.Example"
+				"<%= librarynamespace %>.controls.Example"
 			],
 			elements: []
 		});
 
 		/* eslint-disable */
-		return com.librarygenerator.librarygenerator;
+		return <%= librarynamespace %>;
 		/* eslint-enable */
 
 	}, /* bExport= */ false);

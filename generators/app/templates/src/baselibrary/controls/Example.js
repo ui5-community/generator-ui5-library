@@ -1,7 +1,7 @@
 /*!
  * ${copyright}
  */
-// Provides control com.librarygenerator.librarygenerator.Example.
+// Provides control <%= librarynamespace %>.Example.
 sap.ui.define([
 	"./../library", "sap/ui/core/Control", "./ExampleRenderer"
 ], function (library, Control, ExampleRenderer) {
@@ -22,12 +22,12 @@ sap.ui.define([
 	 *
 	 * @constructor
 	 * @public
-	 * @alias com.librarygenerator.librarygenerator.controls.Example
+	 * @alias <%= librarynamespace %>.controls.Example
 	 * @ui5-metamodel This control/element also will be described in the UI5 (legacy) designtime metamodel
 	 */
-	var Example = Control.extend("com.librarygenerator.librarygenerator.controls.Example", {
+	var Example = Control.extend("<%= librarynamespace %>.controls.Example", {
 		metadata: {
-			library: "com.librarygenerator.librarygenerator",
+			library: "<%= librarynamespace %>",
 			properties: {
 				/**
 				 * text

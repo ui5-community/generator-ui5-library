@@ -45,6 +45,8 @@ module.exports = class extends Generator {
 
       this.config.set(props);
       this.config.set("namespaceURI", props.namespace.split(".").join("/"))
+      this.config.set("librarynamespace", `${props.namespace}.${props.libraryname}`);
+      this.config.set("librarynamespaceURI", this.config.get("librarynamespace").split(".").join("/"));
 
     });
   }
@@ -58,9 +60,7 @@ module.exports = class extends Generator {
       nodir: true
     }).forEach((file) => {
       const sOrigin = this.templatePath(file);
-      let sTarget = this.destinationPath(file.replace(/^_/, "").replace(/\/_/, "/"));
-      
-      console.log(sTarget);
+      let sTarget = this.destinationPath(file.replace(/^_/, "").replace("baselibrary", oConfig.librarynamespaceURI).replace(/\/_/, "/"));
 
       this.fs.copyTpl(sOrigin, sTarget, oConfig);
     });

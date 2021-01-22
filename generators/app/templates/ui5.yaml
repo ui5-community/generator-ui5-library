@@ -1,4 +1,4 @@
 specVersion: '1.0'
 metadata:
-  name: "LibraryGenerator"
+  name: "<%= libraryname %>"
 type: library

@@ -1,5 +1,5 @@
 {
-	"name": "LibraryGenerator",
+	"name": "<%= libraryname %>",
 	"version": "1.0.0",
 	"private": true,
 	"devDependencies": {
@@ -14,7 +14,7 @@
 		"clean": "rm -rf dist",
 		"build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo ",
 		"build-for-deploy": "npm run build && npm run flatten && npm run clean-after-flatten",
-		"flatten": "cp -r dist/resources/com/librarygenerator/librarygenerator/* dist && cp dist/resources/com/librarygenerator/librarygenerator/.library dist && cp dist/resources/.Ui5RepositoryTextFiles dist",
+		"flatten": "cp -r dist/resources/<%= librarynamespaceURI %>/* dist && cp dist/resources/<%= librarynamespaceURI %>/.library dist && cp dist/resources/.Ui5RepositoryTextFiles dist",
 		"clean-after-flatten": "rm -rf dist/resources dist/test-resources"
 	},
 	"license": "UNLICENSED",

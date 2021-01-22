@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
 <library xmlns="http://www.sap.com/sap.ui.library.xsd">
-    <name>com.librarygenerator.librarygenerator</name>
+    <name><%= librarynamespace %></name>
     <vendor>SAP SE</vendor>
     <version>1.0.0</version>
     <copyright>${copyright}</copyright>
-    <title>>Library Generator</title>
-    <documentation>Library Generator</documentation>
+    <title>><%= libraryname %></title>
+    <documentation><%= libraryname %></documentation>
 	<dependencies>
 		<dependency>
 			<libraryName>sap.ui.core</libraryName>
