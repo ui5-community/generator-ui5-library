@@ -17,7 +17,7 @@ sap.ui.define([
 	 * Some class description goes here.
 	 * @extends sap.ui.core.Control
 	 *
-	 * @author SAP SE
+	 * @author UI5 Library Generator
 	 * @version 1.0.0
 	 *
 	 * @constructor
