@@ -11,7 +11,7 @@ sap.ui.define(["sap/ui/core/library"], // library dependency
 		"use strict";
 
 		/**
-		 * Library Generator
+		 * <%= libraryname %>
 		 *
 		 * @namespace
 		 * @name <%= librarynamespace %>

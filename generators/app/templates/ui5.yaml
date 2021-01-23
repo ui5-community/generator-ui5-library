@@ -1,4 +1,11 @@
-specVersion: '1.0'
+specVersion: '2.2'
 metadata:
   name: "<%= libraryname %>"
 type: library
+framework:
+  name: <%= framework %>
+  version: 1.85.2
+  libraries:
+    - name: sap.ui.core
+    - name: themelib_sap_belize
+    - name: themelib_sap_fiori_3

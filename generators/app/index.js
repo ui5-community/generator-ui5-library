@@ -36,6 +36,12 @@ module.exports = class extends Generator {
           return "Please use alpha numeric characters and dots only for the namespace.";
         },
         default: "com.myorg"
+      }, {
+        type: "list",
+        name: "framework",
+        message: "Which framework do you want to use?",
+        choices: ["OpenUI5", "SAPUI5"],
+        default: "OpenUI5"
       }
     ];
 
@@ -47,6 +53,7 @@ module.exports = class extends Generator {
       this.config.set("namespaceURI", props.namespace.split(".").join("/"))
       this.config.set("librarynamespace", `${props.namespace}.${props.libraryname}`);
       this.config.set("librarynamespaceURI", this.config.get("librarynamespace").split(".").join("/"));
+      this.config.set("frameworklowercase", props.framework.toLowerCase());
 
     });
   }
