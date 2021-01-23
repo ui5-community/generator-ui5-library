@@ -1,9 +1,14 @@
-# generator-ui-5-library
-> Generator for UI5 libraries
+# generator-ui5-library
+> Generator for UI5 libraries using UI5 Tooling.  
+> Based on the original library template from SAP Web IDE.  
+> Includes:
+> - Library component
+> - Theme setup (Belize, Fiori 3)
+> - Example component (Qunit tests & run configuration for testing purposes)
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-ui5-library using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-ui5-library using [npm](https://www.npmjs.com/) (assuming you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
@@ -15,13 +20,6 @@ Then generate your new project:
 ```bash
 yo ui5-library
 ```
-
-## Getting To Know Yeoman
-
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
 
 ## License
 
