@@ -71,12 +71,6 @@ module.exports = class extends Generator {
 
       this.fs.copyTpl(sOrigin, sTarget, oConfig);
     });
-
-
-/*     this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    ); */
   }
 
   install() {
@@ -88,17 +82,15 @@ module.exports = class extends Generator {
   }
 
   end() {
-    /*
     this.spawnCommandSync("git", ["init", "--quiet"], {
       cwd: this.destinationPath()
     });
     this.spawnCommandSync("git", ["add", "."], {
       cwd: this.destinationPath()
     });
-    this.spawnCommandSync("git", ["commit", "--quiet", "--allow-empty", "-m", "Initialize repository with generator-ui5-library"], {
+    this.spawnCommandSync("git", ["commit", "--quiet", "--allow-empty", "-m", "Initialize repository with UI5 Library Generator"], {
       cwd: this.destinationPath()
     });
-    */
   }
 
 };
