@@ -1,6 +1,6 @@
 {
   "name": "generator-ui5-library",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Generator for UI5 libraries",
   "homepage": "https://github.com/geert-janklaps/generator-ui5-library",
   "author": {
