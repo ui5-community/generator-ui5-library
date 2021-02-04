@@ -3,10 +3,11 @@
 	"version": "1.0.0",
 	"private": true,
 	"devDependencies": {
-		"@ui5/cli": "2.8.1"
+		"@ui5/cli": "2.8.1",
+		"rimraf": "^3.0.2"
 	},
 	"scripts": {
-		"clean": "rm -rf dist",
+		"clean": "rimraf dist",
 		"build": "npm run clean && ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
 		"start": "ui5 serve --open test-resources/Example.html"
 	},
