@@ -11,7 +11,9 @@ sap.ui.define([],
 		 * Example renderer.
 		 * @namespace
 		 */
-		var ExampleRenderer = {};
+		var ExampleRenderer = {
+			apiVersion: 2
+		};
 
 		/**
 		 * Renders the HTML for the given control, using the provided
@@ -25,15 +27,13 @@ sap.ui.define([],
 		 */
 		ExampleRenderer.render = function (oRm, oControl) {
 
-			oRm.write("<div");
-			oRm.writeControlData(oControl);
-			oRm.addClass("sapRULTExample");
-			oRm.writeClasses();
-			oRm.write(">");
+			oRm.openStart("div", oControl);
+			oRm.class("sapRULTExample");
+			oRm.openEnd( );
 			oRm.write(sap.ui.getCore().getLibraryResourceBundle("<%= librarynamespace %>").getText("ANY_TEXT"));
 
 			oRm.writeEscaped(oControl.getText());
-			oRm.write("</div>");
+			oRm.close("div");
 
 		};
 
