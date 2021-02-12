@@ -35,7 +35,7 @@ sap.ui.define([
 	QUnit.module("Basic Control Checks");
 
 	// some basic control checks
-	QUnit.test("Get properties test", function(assert) {
+	QUnit.test("Test get properties", function(assert) {
 		assert.expect(2);
 		var oExample = new Example({
 			text: "Example"
@@ -45,7 +45,7 @@ sap.ui.define([
 	});
 
 	// some basic eventing check
-	QUnit.test("Get properties test", function(assert) {
+	QUnit.test("Test click event", function(assert) {
 		assert.expect(1);
 		var oExample = new Example("example", {
 			text: "Example",
