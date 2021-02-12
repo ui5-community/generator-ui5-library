@@ -25,36 +25,67 @@ module.exports = class extends Generator {
           return "Please use alpha numeric characters only for the library name.";
         },
         default: "myUI5Library"
-      }, {
+      },
+      {
         type: "input",
         name: "namespace",
         message: "Which namespace do you want to use?",
         validate: s => {
-          if (/^[a-zA-Z0-9_\.]*$/g.test(s)) {
+          if (/^[a-zA-Z0-9_.]*$/g.test(s)) {
             return true;
           }
+
           return "Please use alpha numeric characters and dots only for the namespace.";
         },
         default: "com.myorg"
-      }, {
+      },
+      {
         type: "list",
         name: "framework",
         message: "Which framework do you want to use?",
         choices: ["OpenUI5", "SAPUI5"],
         default: "OpenUI5"
+      },
+      {
+        type: "input", // HINT: we could also use the version info from OpenUI5/SAPUI5 to provide a selection!
+        name: "frameworkVersion",
+        message: "Which framework version do you want to use?",
+        default: "1.86.3"
+      },
+      {
+        type: "input",
+        name: "author",
+        message: "Who is the author of the library?",
+        default: this.user.git.name()
       }
     ];
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
-      //this.props = props;
+      // this.props = props;
 
       this.config.set(props);
-      this.config.set("namespaceURI", props.namespace.split(".").join("/"))
-      this.config.set("librarynamespace", `${props.namespace}.${props.libraryname}`);
-      this.config.set("librarynamespaceURI", this.config.get("librarynamespace").split(".").join("/"));
+      this.config.set("namespaceURI", props.namespace.split(".").join("/"));
+      this.config.set(
+        "librarynamespace",
+        `${props.namespace}.${props.libraryname}`
+      );
+      this.config.set(
+        "librarynamespaceURI",
+        this.config
+          .get("librarynamespace")
+          .split(".")
+          .join("/")
+      );
+      this.config.set(
+        "librarybasepath",
+        this.config
+          .get("librarynamespace")
+          .split(".")
+          .map(_ => "..")
+          .join("/") + "/"
+      );
       this.config.set("frameworklowercase", props.framework.toLowerCase());
-
     });
   }
 
@@ -62,15 +93,22 @@ module.exports = class extends Generator {
     const oConfig = this.config.getAll();
 
     this.sourceRoot(path.join(__dirname, "templates"));
-    glob.sync("**", {
-      cwd: this.sourceRoot(),
-      nodir: true
-    }).forEach((file) => {
-      const sOrigin = this.templatePath(file);
-      let sTarget = this.destinationPath(file.replace(/^_/, "").replace("baselibrary", oConfig.librarynamespaceURI).replace(/\/_/, "/"));
+    glob
+      .sync("**", {
+        cwd: this.sourceRoot(),
+        nodir: true
+      })
+      .forEach(file => {
+        const sOrigin = this.templatePath(file);
+        let sTarget = this.destinationPath(
+          file
+            .replace(/^_/, "")
+            .replace("baselibrary", oConfig.librarynamespaceURI)
+            .replace(/\/_/, "/")
+        );
 
-      this.fs.copyTpl(sOrigin, sTarget, oConfig);
-    });
+        this.fs.copyTpl(sOrigin, sTarget, oConfig);
+      });
   }
 
   install() {
@@ -88,9 +126,18 @@ module.exports = class extends Generator {
     this.spawnCommandSync("git", ["add", "."], {
       cwd: this.destinationPath()
     });
-    this.spawnCommandSync("git", ["commit", "--quiet", "--allow-empty", "-m", "Initialize repository with UI5 Library Generator"], {
-      cwd: this.destinationPath()
-    });
+    this.spawnCommandSync(
+      "git",
+      [
+        "commit",
+        "--quiet",
+        "--allow-empty",
+        "-m",
+        "Initialize repository with UI5 Library Generator"
+      ],
+      {
+        cwd: this.destinationPath()
+      }
+    );
   }
-
 };

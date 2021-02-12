@@ -4,7 +4,7 @@ metadata:
 type: library
 framework:
   name: <%= framework %>
-  version: 1.85.2
+  version: <%= frameworkVersion %>
   libraries:
     - name: sap.ui.core
     - name: themelib_sap_belize
