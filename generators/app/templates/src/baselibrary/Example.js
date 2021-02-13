@@ -4,7 +4,9 @@
 
 // Provides control <%= librarynamespace %>.Example.
 sap.ui.define([
-	"./library", "sap/ui/core/Control", "./ExampleRenderer"
+	"./library", 
+	"sap/ui/core/Control", 
+	"./ExampleRenderer"
 ], function (library, Control, ExampleRenderer) {
 	"use strict";
 
@@ -28,7 +30,7 @@ sap.ui.define([
 	 * @public
 	 * @alias <%= librarynamespace %>.Example
 	 */
-	var Example = Control.extend("<%= librarynamespace %>.Example", {
+	var Example = Control.extend("<%= librarynamespace %>.Example", /** @lends <%= librarynamespace %>.Example.prototype */ {
 		metadata: {
 			library: "<%= librarynamespace %>",
 			properties: {
