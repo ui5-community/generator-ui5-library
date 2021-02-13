@@ -1,6 +1,6 @@
 # UI5 Library Generator
 > Generator for UI5 libraries using UI5 Tooling. (based on the [Easy UI5 Generator](https://github.com/SAP/generator-easy-ui5))  
-> Template library based on the original library template from SAP Web IDE.  
+> Template library based on the latest [best practices template](https://github.com/ui5-community/ui5-library-showcase).  
 > Includes:
 > - Library component
 > - Theme setup (Belize, Fiori 3)
