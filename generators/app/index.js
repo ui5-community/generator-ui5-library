@@ -4,6 +4,7 @@ const chalk = require("chalk");
 const yosay = require("yosay");
 const path = require("path");
 const glob = require("glob");
+const semver = require("semver");
 
 module.exports = class extends Generator {
   prompting() {
@@ -47,10 +48,26 @@ module.exports = class extends Generator {
         default: "OpenUI5"
       },
       {
+        when: response => {
+          const minFwkVersion = {
+            OpenUI5: "1.60.0",
+            SAPUI5: "1.77.0"
+          };
+          this._minFwkVersion = minFwkVersion[response.framework];
+          return true;
+        },
         type: "input", // HINT: we could also use the version info from OpenUI5/SAPUI5 to provide a selection!
         name: "frameworkVersion",
         message: "Which framework version do you want to use?",
-        default: "1.86.3"
+        default: "1.86.3",
+        validate: v => {
+          return (
+            (v && semver.valid(v) && semver.gt(v, this._minFwkVersion)) ||
+            chalk.red(
+              `Framework requires the min version ${this._minFwkVersion}!`
+            )
+          );
+        }
       },
       {
         type: "input",
