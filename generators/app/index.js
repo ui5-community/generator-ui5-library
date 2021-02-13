@@ -62,7 +62,7 @@ module.exports = class extends Generator {
         default: "1.86.3",
         validate: v => {
           return (
-            (v && semver.valid(v) && semver.gt(v, this._minFwkVersion)) ||
+            (v && semver.valid(v) && semver.gte(v, this._minFwkVersion)) ||
             chalk.red(
               `Framework requires the min version ${this._minFwkVersion}!`
             )
