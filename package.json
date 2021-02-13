@@ -36,6 +36,7 @@
   "dependencies": {
     "chalk": "^2.1.0",
     "glob": "^7.1.6",
+    "semver": "^7.3.4",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },

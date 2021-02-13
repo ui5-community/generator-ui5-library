@@ -1,15 +1,14 @@
 {
-	"name": "<%= libraryname %>",
-	"version": "1.0.0",
-	"private": true,
-	"devDependencies": {
-		"@ui5/cli": "2.8.1",
-		"rimraf": "^3.0.2"
-	},
-	"scripts": {
-		"clean": "rimraf dist",
-		"build": "npm run clean && ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
-		"start": "ui5 serve --open test-resources/Example.html"
-	},
-	"license": "UNLICENSED"
+  "name": "<%= libraryname %>",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "@ui5/cli": "^2.9.3"
+  },
+  "scripts": {
+    "build": "ui5 build --clean-dest",
+    "start": "ui5 serve --open test-resources/<%= librarynamespaceURI %>/Example.html",
+    "test": "ui5 serve --open test-resources/<%= librarynamespaceURI %>/qunit/testsuite.qunit.html"
+  },
+  "license": "UNLICENSED"
 }
