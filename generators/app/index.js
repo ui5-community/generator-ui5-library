@@ -7,6 +7,8 @@ const glob = require("glob");
 const semver = require("semver");
 
 module.exports = class extends Generator {
+  static displayName = "Create a new OpenUI5/SAPUI5 library";
+
   prompting() {
     // Have Yeoman greet the user.
     this.log(
