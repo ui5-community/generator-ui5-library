@@ -7,11 +7,15 @@ const glob = require("glob");
 const semver = require("semver");
 
 module.exports = class extends Generator {
+  static displayName = "Create a new OpenUI5/SAPUI5 library";
+
   prompting() {
     // Have Yeoman greet the user.
-    this.log(
-      yosay(`Welcome to the ${chalk.red("generator-ui5-library")} generator!`)
-    );
+    if (!this.options.embedded) {
+      this.log(
+        yosay(`Welcome to the ${chalk.red("generator-ui5-library")} generator!`)
+      );
+    }
 
     const prompts = [
       {
