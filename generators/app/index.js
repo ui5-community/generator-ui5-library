@@ -11,9 +11,11 @@ module.exports = class extends Generator {
 
   prompting() {
     // Have Yeoman greet the user.
-    this.log(
-      yosay(`Welcome to the ${chalk.red("generator-ui5-library")} generator!`)
-    );
+    if (!this.options.embedded) {
+      this.log(
+        yosay(`Welcome to the ${chalk.red("generator-ui5-library")} generator!`)
+      );
+    }
 
     const prompts = [
       {
