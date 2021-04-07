@@ -78,12 +78,21 @@ module.exports = class extends Generator {
         name: "author",
         message: "Who is the author of the library?",
         default: this.user.git.name()
+      },
+      {
+        type: "confirm",
+        name: "newdir",
+        message: "Would you like to create a new directory for the library?",
+        default: true
       }
     ];
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       // this.props = props;
+      if (props.newdir) {
+        this.destinationRoot(`${props.namespace}.${props.libraryname}`);
+      }
 
       this.config.set(props);
       this.config.set("namespaceURI", props.namespace.split(".").join("/"));

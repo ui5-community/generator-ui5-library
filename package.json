@@ -1,6 +1,6 @@
 {
   "name": "generator-ui5-library",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Generator for UI5 libraries",
   "homepage": "https://github.com/geert-janklaps/generator-ui5-library",
   "author": {
@@ -19,16 +19,20 @@
     "yeoman-generator"
   ],
   "devDependencies": {
-    "yeoman-test": "^1.7.0",
-    "yeoman-assert": "^3.1.0",
-    "eslint": "^6.6.0",
-    "prettier": "^1.19.1",
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.3",
-    "eslint-config-prettier": "^6.6.0",
+    "@babel/eslint-parser": "^7.13.14",
+    "@babel/eslint-plugin": "^7.13.10",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-xo": "^0.35.0",
     "eslint-plugin-prettier": "^3.1.1",
-    "eslint-config-xo": "^0.27.2",
-    "jest": "^26.1.0"
+    "husky": "^3.0.9",
+    "jest": "^26.1.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^1.19.1",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^1.7.0"
   },
   "engines": {
     "npm": ">= 4.0.0"
@@ -36,7 +40,7 @@
   "dependencies": {
     "chalk": "^2.1.0",
     "glob": "^7.1.6",
-    "semver": "^7.3.4",
+    "semver": "^7.3.5",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
@@ -59,6 +63,16 @@
     }
   },
   "eslintConfig": {
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "ecmaVersion": 11,
+      "requireConfigFile": false,
+      "babelOptions": {
+        "plugins": [
+          "@babel/plugin-proposal-class-properties"
+        ]
+      }
+    },
     "extends": [
       "xo",
       "prettier"
@@ -71,7 +85,8 @@
       "prettier/prettier": "error"
     },
     "plugins": [
-      "prettier"
+      "prettier",
+      "@babel"
     ]
   },
   "scripts": {
