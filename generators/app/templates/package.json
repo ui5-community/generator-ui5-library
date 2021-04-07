@@ -7,7 +7,13 @@
     "karma": "^6.1.1",
     "karma-chrome-launcher": "^3.1.0",
     "karma-cli": "^2.0.0",
-    "karma-ui5": "^2.3.3"
+    "karma-ui5": "^2.3.3",
+    "ui5-middleware-livereload": "^0.5.1"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-middleware-livereload"
+    ]
   },
   "scripts": {
     "build": "ui5 build --clean-dest",
