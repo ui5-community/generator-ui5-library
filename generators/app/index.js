@@ -91,7 +91,7 @@ module.exports = class extends Generator {
       // To access props later use this.props.someAnswer;
       // this.props = props;
       if (props.newdir) {
-        this.destinationRoot(`${props.namespace}.${props.libraryname}`);
+        this.destinationRoot(this.destinationPath(`${props.namespace}.${props.libraryname}`));
       }
 
       this.config.set(props);
