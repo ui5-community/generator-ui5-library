@@ -1,2 +1,10 @@
-coverage
-**/templates
+# Ignore node_files
+node_modules/
+
+# Ignore templates
+generators/*/templates/
+generators/*/templates-theme/
+
+# Ignore test files
+__tests__/
+test/

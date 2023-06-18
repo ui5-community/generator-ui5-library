@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Test Page for <%= libId %>.Example</title>
+		<base href="<%= libBasePath %>/../" />
+		<script
+			src="resources/sap-ui-core.js"
+			id="sap-ui-bootstrap"
+			data-sap-ui-async="true"
+			data-sap-ui-oninit="module:local/Example"
+			data-sap-ui-libs="sap.ui.core,<%= libId %>"
+			data-sap-ui-theme="<%= defaultTheme %>"
+			data-sap-ui-resourceroots='{"local" : "./test-resources/<%= libURI %>/"}'
+		></script>
+	</head>
+	<body class="sapUiBody">
+		<h1 id="header">Test Page for <code><%= libId %>.Example</code></h1>
+		<div id="content"></div>
+	</body>
+</html>

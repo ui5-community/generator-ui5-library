@@ -1,98 +1,63 @@
 {
-  "name": "generator-ui5-library",
-  "version": "1.0.10",
-  "description": "Generator for UI5 libraries",
-  "homepage": "https://github.com/geert-janklaps/generator-ui5-library",
-  "author": {
-    "name": "Geert-Jan Klaps",
-    "email": "geert-jan@klaps.org",
-    "url": "https://www.linkedin.com/in/geertjanklaps"
-  },
-  "files": [
-    "generators"
-  ],
-  "main": "generators/index.js",
-  "keywords": [
-    "ui5",
-    "library",
-    "generator",
-    "yeoman-generator"
-  ],
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.13.14",
-    "@babel/eslint-plugin": "^7.13.10",
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/plugin-syntax-class-properties": "^7.12.13",
-    "eslint": "^7.23.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-config-xo": "^0.35.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "husky": "^3.0.9",
-    "jest": "^26.1.0",
-    "lint-staged": "^10.5.4",
-    "prettier": "^1.19.1",
-    "yeoman-assert": "^3.1.0",
-    "yeoman-test": "^1.7.0"
-  },
-  "engines": {
-    "npm": ">= 4.0.0"
-  },
-  "dependencies": {
-    "chalk": "^2.1.0",
-    "glob": "^7.1.6",
-    "semver": "^7.3.5",
-    "yeoman-generator": "^2.0.1",
-    "yosay": "^2.0.1"
-  },
-  "jest": {
-    "testEnvironment": "node"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "eslintConfig": {
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-      "ecmaVersion": 11,
-      "requireConfigFile": false,
-      "babelOptions": {
-        "plugins": [
-          "@babel/plugin-proposal-class-properties"
-        ]
-      }
-    },
-    "extends": [
-      "xo",
-      "prettier"
-    ],
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "rules": {
-      "prettier/prettier": "error"
-    },
-    "plugins": [
-      "prettier",
-      "@babel"
-    ]
-  },
-  "scripts": {
-    "pretest": "eslint .",
-    "test": "jest"
-  },
-  "repository": "https://github.com/geert-janklaps/generator-ui5-library.git",
-  "license": "MIT"
+	"name": "generator-ui5-ts-library",
+	"version": "1.1.0",
+	"description": "Yeoman-based (sub-)generator for a basic UI5 library",
+	"main": "generators/app/index.js",
+	"type": "module",
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"lint:staged": "lint-staged",
+		"format": "prettier --write .",
+		"format:staged": "pretty-quick --staged --verbose",
+		"test": "cd test && yo ../../generator-ui5-ts-library",
+		"prepare": "node ./.husky/skip.js || husky install",
+		"hooks:pre-commit": "npm-run-all --sequential format:staged lint:staged"
+	},
+	"keywords": [
+		"yeoman-generator",
+		"ui5",
+		"openui5",
+		"sapui5",
+		"library",
+		"typescript"
+	],
+	"author": {
+		"name": "Geert-Jan Klaps",
+		"email": "geert-jan@klaps.org",
+		"url": "https://www.linkedin.com/in/geertjanklaps"
+	},
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ui5-community/generator-ui5-ts-library.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ui5-community/generator-ui5-ts-library/issues"
+	},
+	"homepage": "https://github.com/ui5-community/generator-ui5-ts-library#readme",
+	"dependencies": {
+		"chalk": "^5.2.0",
+		"glob": "^10.2.7",
+		"package-json": "^8.1.1",
+		"semver": "^7.5.2",
+		"yeoman-generator": "^5.9.0",
+		"yosay": "^2.0.2"
+	},
+	"devDependencies": {
+		"@prettier/plugin-xml": "^2.2.0",
+		"eslint": "^8.42.0",
+		"eslint-plugin-jsdoc": "^46.2.6",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.2",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.8.8",
+		"prettier-plugin-properties": "^0.2.0",
+		"pretty-quick": "^3.1.3",
+		"yeoman-assert": "^3.1.1",
+		"yeoman-test": "^7.4.0"
+	},
+	"overrides": {
+		"minimist": ">=1.2.6"
+	}
 }

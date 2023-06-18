@@ -1,6 +1,6 @@
 # EditorConfig helps developers define and maintain consistent
 # coding styles between different editors and IDEs
-# see https://editorconfig.org
+# editorconfig.org
 
 root = true
 
@@ -12,10 +12,11 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 # Change these settings to your own preference
+indent_style = tab
+
+[*.{yaml,yml,md,json,xml,properties}]
+indent_size = 2
 indent_style = space
 
 [*.md]
 trim_trailing_whitespace = false
-
-[{package.json,*.yaml}]
-indent_size = 2

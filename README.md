@@ -1,26 +1,62 @@
-# UI5 Library Generator
-> Generator for UI5 libraries using UI5 Tooling. (based on the [Easy UI5 Generator](https://github.com/SAP/generator-easy-ui5))  
-> Template library based on the latest [best practices template](https://github.com/ui5-community/ui5-library-showcase).  
-> Includes:
-> - Library component
-> - Theme setup (Belize, Fiori 3)
-> - Example component (Qunit tests & run configuration for testing purposes)
+# generator-ui5-ts-library
 
-## Installation
+[![License Status][license-image]][license-url]
 
-First, install [Yeoman](http://yeoman.io) and generator-ui5-library using [npm](https://www.npmjs.com/) (assuming you have pre-installed [node.js](https://nodejs.org/)).
+[Yeoman](https://yeoman.io/) generator kickstarting the development of UI5 libraries. The generator incorporates the latest best-practices, is using the [UI5 Tooling](https://sap.github.io/ui5-tooling/) and the UI5 Tooling extensions provided by the [UI5 community](https://github.com/ui5-community/ui5-ecosystem-showcase/). It is maintained by the UI5 community and [OpenUI5](https://openui5.org)/[SAPUI5](https://ui5.sap.com) developers. This generator was build as a plug-in for the community project [Easy-UI5](https://github.com/SAP/generator-easy-ui5/) by [SAP](https://github.com/SAP/).
+
+## Usage with Easy-UI5
 
 ```bash
-npm install -g yo
-npm install -g generator-ui5-library
+$> npm i -g yo generator-easy-ui5
+$> yo easy-ui5 library
+
+     _-----_
+    |       |    ╭──────────────────────────╮
+    |--(o)--|    │  Welcome to the easy-ui5 │
+   `---------´   │        generator!        │
+    ( _´U`_ )    ╰──────────────────────────╯
+    /___A___\   /
+     |  ~  |
+   __'.___.'__
+ ´   `  |° ´ Y `
 ```
 
-Then generate your new project:
+After the generation of your project you can use `npm start` (or `yarn start`) to start the local development server.
+
+## Standalone usage
+
+Note the different greeting when the generator starts:
 
 ```bash
-yo ui5-library
+$> npm i -g yo
+$> yo ./generator-ui5-library
+
+     _-----_     ╭───────────────────────╮
+    |       |    │    Welcome to the     │
+    |--(o)--|    │ generator-ui5-library │
+   `---------´   │      generator!       │
+    ( _´U`_ )    ╰───────────────────────╯
+    /___A___\   /
+     |  ~  |
+   __'.___.'__
+ ´   `  |° ´ Y `
 ```
+
+## Support
+
+Please use the GitHub bug tracking system to post questions, bug reports or to create pull requests.
+
+## Contributing
+
+We welcome any type of contribution (code contributions, pull requests, issues) to this generator equally.
 
 ## License
 
-MIT © [Geert-Jan Klaps]()
+This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the LICENSE file.
+
+[license-image]: https://img.shields.io/github/license/ui5-community/generator-ui5-library.svg
+[license-url]: https://github.com/ui5-community/generator-ui5-library/blob/main/LICENSE
+
+---
+
+###### This generator is provided to you by Geert-Jan Klaps and contributors :wink:
