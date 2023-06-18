@@ -1,4 +1,4 @@
-# generator-ui5-ts-library
+# generator-ui5-library
 
 [![License Status][license-image]][license-url]
 
