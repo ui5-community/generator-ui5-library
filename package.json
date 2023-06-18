@@ -1,5 +1,5 @@
 {
-	"name": "generator-ui5-ts-library",
+	"name": "generator-ui5-library",
 	"version": "1.1.0",
 	"description": "Yeoman-based (sub-)generator for a basic UI5 library",
 	"main": "generators/app/index.js",
@@ -10,7 +10,7 @@
 		"lint:staged": "lint-staged",
 		"format": "prettier --write .",
 		"format:staged": "pretty-quick --staged --verbose",
-		"test": "cd test && yo ../../generator-ui5-ts-library",
+		"test": "cd test && yo ../../generator-ui5-library",
 		"prepare": "node ./.husky/skip.js || husky install",
 		"hooks:pre-commit": "npm-run-all --sequential format:staged lint:staged"
 	},
@@ -29,12 +29,12 @@
 	"license": "Apache-2.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ui5-community/generator-ui5-ts-library.git"
+		"url": "https://github.com/ui5-community/generator-ui5-library.git"
 	},
 	"bugs": {
-		"url": "https://github.com/ui5-community/generator-ui5-ts-library/issues"
+		"url": "https://github.com/ui5-community/generator-ui5-library/issues"
 	},
-	"homepage": "https://github.com/ui5-community/generator-ui5-ts-library#readme",
+	"homepage": "https://github.com/ui5-community/generator-ui5-library#readme",
 	"dependencies": {
 		"chalk": "^5.2.0",
 		"glob": "^10.2.7",
