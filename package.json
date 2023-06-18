@@ -19,8 +19,7 @@
 		"ui5",
 		"openui5",
 		"sapui5",
-		"library",
-		"typescript"
+		"library"
 	],
 	"author": {
 		"name": "Geert-Jan Klaps",
