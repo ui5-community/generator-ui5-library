@@ -89,6 +89,12 @@ export default class extends Generator {
 				}
 			},
 			{
+				type: "confirm",
+				name: "flat",
+				message: "Would you like to omit the namespace in the src and test folder?",
+				default: true
+			},
+			{
 				type: "input",
 				name: "author",
 				message: "Who is the author of the application?",
@@ -152,7 +158,7 @@ export default class extends Generator {
 
 	writing() {
 		const oConfig = this.config.getAll();
-		const libPath = oConfig.libURI;
+		const libPath = oConfig.flat ? "" : oConfig.libURI;
 
 		// write library
 		this.sourceRoot(upath.join(__dirname, "templates"));
@@ -179,7 +185,7 @@ export default class extends Generator {
 				})
 				.forEach((file) => {
 					const sOrigin = this.templatePath(file);
-					const sTarget = this.destinationPath(file.replace("_library_", oConfig.libURI).replace("_theme_", theme));
+					const sTarget = this.destinationPath(file.replace("_library_", libPath).replace("_theme_", theme));
 					this.fs.copyTpl(sOrigin, sTarget, Object.assign({ themeName: theme }, oConfig));
 				});
 		});
