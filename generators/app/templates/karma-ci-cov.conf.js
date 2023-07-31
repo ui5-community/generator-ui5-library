@@ -7,7 +7,11 @@ module.exports = function (config) {
 		preprocessors: {
 			"src/**/*.js": ["coverage"],
 			"test/**/*.js": ["coverage"]
-		},
+		},<% if (flat) { %>
+		proxies: {
+			'/resources/<%= libURI %>/': '/base/src/',
+			'/test-resources/<%= libURI %>/': '/base/test/',
+		},<% } %>
 		coverageReporter: {
 			dir: "coverage",
 			reporters: [

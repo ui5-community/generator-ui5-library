@@ -2,4 +2,5 @@
 test/*/
 
 # Ignore all source files using the placeholders to kill the syntax
+generators/app/templates/karma-ci-cov.conf.js
 generators/app/templates/src/_library_/library.js
