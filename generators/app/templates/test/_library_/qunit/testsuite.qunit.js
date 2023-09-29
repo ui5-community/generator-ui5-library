@@ -20,7 +20,11 @@ sap.ui.define(function () {
 				qunitBridge: true,
 				useFakeTimers: false
 			},
-			module: "./{name}.qunit"
+			module: "./{name}.qunit",
+			coverage: {
+				only: ["<%= libURI %>/"],
+				never: ["test-resources/"]
+			}
 		},
 		tests: {
 			// test file for the Example control
