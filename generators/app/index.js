@@ -169,7 +169,12 @@ export default class extends Generator {
 			})
 			.forEach((file) => {
 				const sOrigin = this.templatePath(file);
-				const sTarget = this.destinationPath(file.replace(/^_/, "").replace("_library_", libPath).replace(/\/_/, "/"));
+				const sTarget = this.destinationPath(
+					file
+						.replace(/^_/, "")
+						.replace("_library_", libPath)
+						.replace(/[\\/]_/, "/")
+				);
 				this.fs.copyTpl(sOrigin, sTarget, oConfig);
 			});
 
