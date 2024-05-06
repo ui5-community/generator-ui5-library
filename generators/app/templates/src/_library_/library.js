@@ -33,7 +33,7 @@ sap.ui.define([
 	 * Some description about <code><%= libId %></code>
 	 *
 	 * @namespace
-	 * @name <%= libId %>
+	 * @alias <%= libId %>
 	 * @author <%= author %>
 	 * @version ${version}
 	 * @public
