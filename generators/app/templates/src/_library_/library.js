@@ -6,8 +6,9 @@
  * Initialization Code and shared classes of library <%= libId %>.
  */
 sap.ui.define([
+	"sap/base/util/ObjectPath",
 	"sap/ui/core/library"
-], function () {
+], function (ObjectPath) {
 	"use strict";
 
 	// delegate further initialization of this library to the Core
@@ -38,7 +39,7 @@ sap.ui.define([
 	 * @version ${version}
 	 * @public
 	 */
-	var thisLib = <%= libId %>;
+	const thisLib = ObjectPath.get("<%= libId %>");
 
 	/**
 	 * Semantic Colors of the <code><%= libId %>.Example</code>.

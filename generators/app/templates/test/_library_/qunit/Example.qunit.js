@@ -1,12 +1,12 @@
-/*global QUnit */
+/*global QUnit, jQuery */
 sap.ui.define(["<%= libURI %>/library", "<%= libURI %>/Example"], function (library, Example) {
 	"use strict";
 
 	// refer to library types
-	var ExampleColor = library.ExampleColor;
+	const ExampleColor = library.ExampleColor;
 
 	// prepare DOM
-	var oDiv = document.createElement("div");
+	const oDiv = document.createElement("div");
 	oDiv.id = "uiArea1";
 	document.body.appendChild(oDiv);
 
@@ -22,7 +22,7 @@ sap.ui.define(["<%= libURI %>/library", "<%= libURI %>/Example"], function (libr
 	// example async test
 	QUnit.test("Async", function (assert) {
 		assert.expect(1);
-		return new Promise(function (resolve, reject) {
+		return new Promise(function (resolve /*, reject*/) {
 			assert.ok(true, "ok");
 			resolve();
 		});
@@ -34,7 +34,7 @@ sap.ui.define(["<%= libURI %>/library", "<%= libURI %>/Example"], function (libr
 	// some basic control checks
 	QUnit.test("Test get properties", function (assert) {
 		assert.expect(2);
-		var oExample = new Example({
+		const oExample = new Example({
 			text: "Example"
 		});
 		assert.equal(oExample.getText(), "Example", "Check text equals 'Example'");
@@ -44,13 +44,13 @@ sap.ui.define(["<%= libURI %>/library", "<%= libURI %>/Example"], function (libr
 	// some basic eventing check
 	QUnit.test("Test click event", function (assert) {
 		assert.expect(1);
-		var oExample = new Example("example", {
+		const oExample = new Example("example", {
 			text: "Example",
 			press: function () {
 				assert.ok(true, "Event has been fired!");
 			}
 		}).placeAt("uiArea1");
-		return new Promise(function (resolve, reject) {
+		return new Promise(function (resolve /*, reject*/) {
 			setTimeout(function () {
 				// eslint-disable-next-line new-cap
 				oExample.$().trigger(jQuery.Event("click"));

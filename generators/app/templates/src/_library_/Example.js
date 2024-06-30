@@ -7,7 +7,7 @@ sap.ui.define(["./library", "sap/ui/core/Control", "./ExampleRenderer"], functio
 	"use strict";
 
 	// refer to library types
-	var ExampleColor = library.ExampleColor;
+	const ExampleColor = library.ExampleColor;
 
 	/**
 	 * Constructor for a new <code><%= libId %>.Example</code> control.
@@ -26,7 +26,7 @@ sap.ui.define(["./library", "sap/ui/core/Control", "./ExampleRenderer"], functio
 	 * @public
 	 * @alias <%= libId %>.Example
 	 */
-	var Example = Control.extend(
+	const Example = Control.extend(
 		"<%= libId %>.Example",
 		/** @lends <%= libId %>.Example.prototype */ {
 			metadata: {
