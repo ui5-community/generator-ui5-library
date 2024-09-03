@@ -21,6 +21,7 @@
 		"@ui5/middleware-code-coverage": "^2.0.0",
 		"eslint": "^9.9.1",
 		"eslint-plugin-jsdoc": "^50.2.2",
+		"globals": "^15.9.0",
 		"karma": "^6.4.4",
 		"karma-chrome-launcher": "^3.2.0",
 		"karma-coverage": "^2.2.1",
