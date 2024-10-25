@@ -4,12 +4,9 @@ sap.ui.define(function () {
 	return {
 		name: "QUnit TestSuite for <%= libId %>",
 		defaults: {
-			bootCore: true,
 			ui5: {
-				libs: "sap.ui.core,<%= libId %>",
-				theme: "<%= defaultTheme %>",
-				noConflict: true,
-				preload: "auto"
+				libs: ["sap.ui.core", "<%= libId %>"],
+				theme: "<%= defaultTheme %>"
 			},
 			qunit: {
 				version: 2,
@@ -20,7 +17,6 @@ sap.ui.define(function () {
 				qunitBridge: true,
 				useFakeTimers: false
 			},
-			module: "./{name}.qunit",
 			coverage: {
 				only: ["<%= libURI %>/"],
 				never: ["test-resources/"]
