@@ -42,6 +42,16 @@ $> yo ./generator-ui5-library
  ´   `  |° ´ Y `
 ```
 
+## Development Setup
+
+After cloning the repository, run:
+
+```bash
+npm run setup
+```
+
+This runs `npm install` followed by `npm run prepare` (which installs the Husky git hooks). A dedicated `setup` script is needed because the project uses `ignore-scripts=true` in `.npmrc` to prevent execution of arbitrary postinstall scripts from dependencies — a supply-chain security hardening measure. Since lifecycle scripts are disabled globally, the `prepare` hook that normally installs Husky doesn't fire automatically, so `npm run setup` triggers it explicitly.
+
 ## Support
 
 Please use the GitHub bug tracking system to post questions, bug reports or to create pull requests.
