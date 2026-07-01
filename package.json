@@ -4,6 +4,9 @@
 	"description": "Yeoman-based (sub-)generator for a basic UI5 library",
 	"main": "generators/app/index.js",
 	"type": "module",
+	"engines": {
+		"node": ">=22.22.1"
+	},
 	"scripts": {
 		"setup": "npm install && npm run prepare",
 		"lint": "eslint .",
