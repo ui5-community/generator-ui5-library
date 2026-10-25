@@ -16,6 +16,10 @@ sap.ui.define(function () {
 				version: 4,
 				qunitBridge: true,
 				useFakeTimers: false
+			},
+			coverage: {
+				only: ["<%= libURI %>/"],
+				never: ["test-resources/"]
 			}
 		},
 		tests: {

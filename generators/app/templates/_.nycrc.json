@@ -1,5 +1,0 @@
-{
-	"all": true,
-	"sourceMap": false,
-	"include": ["**/resources/<%= libURI %>/**"]
-}
