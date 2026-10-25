@@ -20,6 +20,50 @@ export default class extends Generator {
 			// disable the Yeoman 5 package-manager logic (auto install)!
 			customInstallTask: "disabled"
 		});
+
+		// declare the arguments and options of the generator, so they can be shown by --help
+		this.argument("libNamespace", {
+			// "libNamespace" is used here to avoid a conflict with the "namespace" property, which is natively in this.options, where these arguments also end up
+			type: String,
+			required: false,
+			description: "The namespace for the library, e.g. com.myorg.mylib"
+		});
+
+		this.argument("framework", {
+			type: String,
+			required: false,
+			description: "The framework to use, i.e. OpenUI5 or SAPUI5"
+		});
+
+		this.argument("frameworkVersion", {
+			type: String,
+			required: false,
+			description: "The framework version to use, e.g. 1.136.0"
+		});
+
+		this.argument("flat", {
+			type: Boolean,
+			required: false,
+			description: "Whether to omit the namespace in the src and test folder"
+		});
+
+		this.argument("author", {
+			type: String,
+			required: false,
+			description: "The author of the library, e.g. John Doe"
+		});
+
+		this.argument("newdir", {
+			type: Boolean,
+			required: false,
+			description: "Whether a new directory should be created for the library"
+		});
+
+		this.argument("initrepo", {
+			type: Boolean,
+			required: false,
+			description: "Whether to initialize a local git repository for the library"
+		});
 	}
 
 	prompting() {
@@ -41,38 +85,94 @@ export default class extends Generator {
 			}
 		};
 
-		const prompts = [
-			{
+		// validate any arguments given via CLI
+		if (!/^[a-z0-9][a-z0-9_.]*$/g.test(this.options.libNamespace)) {
+			this.log(chalk.red("The provided namespace is not valid! Please use lowercase alpha numeric characters, underscores and dots only."));
+			delete this.options.libNamespace;
+		}
+
+		if (this.options.framework && !["OpenUI5", "SAPUI5"].includes(this.options.framework)) {
+			this.log(chalk.red("The provided framework is not valid! Please use either OpenUI5 or SAPUI5."));
+			delete this.options.framework;
+		}
+
+		if (this.options.frameworkVersion && !semver.valid(this.options.frameworkVersion)) {
+			this.log(chalk.red("The provided framework version is not valid! Please use a valid semantic version, e.g. 1.136.0."));
+			delete this.options.frameworkVersion;
+		} else if (this.options.frameworkVersion && this.options.framework && semver.lt(this.options.frameworkVersion, fwkInfo[this.options.framework].minVersion)) {
+			this.log(
+				chalk.red(`The provided framework version ${this.options.frameworkVersion} is not valid! The minimum version for ${this.options.framework} is ${fwkInfo[this.options.framework].minVersion}.`)
+			);
+			delete this.options.frameworkVersion;
+		}
+
+		if (this.options.flat !== undefined) {
+			// it's coming as string because it is an argument, not an option, so we can differentiate between "undefined" and "false" value
+			if (this.options.flat === "false") {
+				this.options.flat = false;
+			} else if (this.options.flat === "true") {
+				this.options.flat = true;
+			}
+		}
+
+		if (this.options.newdir !== undefined) {
+			// it's coming as string because it is an argument, not an option, so we can differentiate between "undefined" and "false" value
+			if (this.options.newdir === "false") {
+				this.options.newdir = false;
+			} else if (this.options.newdir === "true") {
+				this.options.newdir = true;
+			}
+		}
+
+		if (this.options.initrepo !== undefined) {
+			// same as above
+			if (this.options.initrepo === "false") {
+				this.options.initrepo = false;
+			} else if (this.options.initrepo === "true") {
+				this.options.initrepo = true;
+			}
+		}
+
+		// prepare the needed prompts
+		const prompts = [];
+		if (!this.options.libNamespace) {
+			// only prompt the user when not provided already
+			prompts.push({
 				type: "input",
 				name: "namespace",
-				message: "What is the namespace of your library?",
+				message: "Enter your library id (namespace)?",
 				validate: (s) => {
-					if (/^[a-zA-Z0-9][a-zA-Z0-9_.]*$/g.test(s)) {
+					if (/^[a-z0-9][a-z0-9_.]*$/g.test(s)) {
 						return true;
 					}
 
-					return "Please use alpha numeric characters and dots only for the namespace.";
+					return "Please use lowercase alpha numeric characters, underscores and dots only for the namespace.";
 				},
 				default: "com.myorg.mylib"
-			},
-			{
+			});
+		}
+
+		if (!this.options.framework) {
+			prompts.push({
 				type: "list",
 				name: "framework",
 				message: "Which framework do you want to use?",
-				choices: Object.keys(fwkInfo),
-				default: Object.keys(fwkInfo)[0]
-			},
-			{
+				choices: ["OpenUI5", "SAPUI5"],
+				default: "OpenUI5"
+			});
+		}
+
+		if (!this.options.frameworkVersion) {
+			prompts.push({
 				when: (response) => {
-					this._minFwkVersion = fwkInfo[response.framework].minVersion;
+					this._minFwkVersion = fwkInfo[response.framework || this.options.framework].minVersion;
 					return true;
 				},
 				type: "input", // HINT: we could also use the version info from OpenUI5/SAPUI5 to provide a selection!
 				name: "frameworkVersion",
 				message: "Which framework version do you want to use?",
 				default: async (answers) => {
-					const minVersion = fwkInfo[answers.framework].minVersion;
-					const npmPackage = fwkInfo[answers.framework].npmPackage;
+					const npmPackage = fwkInfo[answers.framework || this.options.framework].npmPackage;
 					try {
 						return (
 							await packageJson(npmPackage, {
@@ -81,41 +181,61 @@ export default class extends Generator {
 						).version;
 					} catch (ex) {
 						chalk.red("Failed to lookup latest version for ${npmPackage}! Fallback to min version...");
-						return minVersion[answers.framework];
+						return fwkInfo[answers.framework || this.options.framework].minVersion;
 					}
 				},
 				validate: (v) => {
 					return (v && semver.valid(v) && semver.gte(v, this._minFwkVersion)) || chalk.red(`Framework requires the min version ${this._minFwkVersion} due to the availability of the NPM packages!`);
 				}
-			},
-			{
+			});
+		}
+
+		if (this.options.flat === undefined) {
+			prompts.push({
 				type: "confirm",
 				name: "flat",
 				message: "Would you like to omit the namespace in the src and test folder?",
 				default: true
-			},
-			{
+			});
+		}
+
+		if (!this.options.author) {
+			prompts.push({
 				type: "input",
 				name: "author",
-				message: "Who is the author of the application?",
+				message: "Who is the author of the library?",
 				default: this.user.git.name()
-			},
-			{
+			});
+		}
+
+		if (this.options.newdir === undefined) {
+			prompts.push({
 				type: "confirm",
 				name: "newdir",
-				message: "Would you like to create a new directory for the application?",
+				message: "Would you like to create a new directory for the library?",
 				default: true
-			},
-			{
+			});
+		}
+
+		if (this.options.initrepo === undefined) {
+			prompts.push({
 				type: "confirm",
 				name: "initrepo",
-				message: "Would you like to initialize a local github repository for the application?",
+				message: "Would you like to initialize a local git repository for the library?",
 				default: true
-			}
-		];
+			});
+		}
 
 		return this.prompt(prompts).then((props) => {
-			// use the namespace and the application name as new subdirectory
+			// merge pre-filled arguments with prompt answers
+			Object.values(this._arguments)
+				.map((v) => v.name)
+				.forEach((key) => {
+					props[key] = props[key] !== undefined ? props[key] : this.options[key];
+				});
+			props.namespace = props.namespace || props.libNamespace; // use "namespace" from here ("libNamespace" was used in the CLI to prevent a conflict with native this.options content)
+
+			// use the namespace and the library name as new subdirectory
 			if (props.newdir) {
 				this.destinationRoot(this.destinationPath(`${props.namespace}`));
 			}
@@ -153,6 +273,9 @@ export default class extends Generator {
 					sap_belize: ["sap_belize", "sap_belize_plus", "sap_belize_hcw", "sap_belize_hcb"]
 				});
 			}
+
+			// version parameters
+			this.config.set("gte2_0_0", semver.gte(props.frameworkVersion, "2.0.0"));
 		});
 	}
 
