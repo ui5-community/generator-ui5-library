@@ -180,7 +180,7 @@ export default class extends Generator {
 							})
 						).version;
 					} catch (ex) {
-						chalk.red("Failed to lookup latest version for ${npmPackage}! Fallback to min version...");
+						this.log(chalk.red(`Failed to lookup latest version for ${npmPackage}! Fallback to min version...`));
 						return fwkInfo[answers.framework || this.options.framework].minVersion;
 					}
 				},
