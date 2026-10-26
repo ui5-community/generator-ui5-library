@@ -7,26 +7,25 @@
 	"scripts": {
 		"clean": "rimraf dist coverage",
 		"build": "ui5 build --clean-dest",
-		"start": "ui5 serve -o test-resources/<%= libURI %>/Example.html",
+		"serve": "ui5 serve",
+		"start": "npm run serve -- -o test-resources/<%= libURI %>/Example.html",
 		"start:dist": "npm start -- --config ui5-dist.yaml",
 		"testsuite": "ui5 serve -o test-resources/<%= libURI %>/qunit/testsuite.qunit.html",
 		"lint": "eslint src test",
-		"karma": "karma start",
-		"karma-ci": "karma start karma-ci.conf.js",
-		"karma-ci-cov": "karma start karma-ci-cov.conf.js",
-		"test": "npm run lint && npm run karma-ci-cov"
+		"test-runner": "ui5-test-runner --url http://localhost:8080/test-resources/<%= libURI %>/qunit/testsuite.qunit.html",
+		"test-runner-coverage": "ui5-test-runner --url http://localhost:8080/test-resources/<%= libURI %>/qunit/testsuite.qunit.html --coverage -ccb 50 -ccf 50 -ccl 50 -ccs 50",
+		"test-ui5": "ui5-test-runner start serve --url http://localhost:8080/test-resources/<%= libURI %>/qunit/testsuite.qunit.html --coverage -ccb 50 -ccf 50 -ccl 50 -ccs 50",
+		"test": "npm run lint && npm run test-ui5"
 	},
 	"devDependencies": {
-		"@ui5/cli": "^4.0.57",
+		"@eslint/js": "^10.0.1",
+		"@ui5/cli": "^4.0.71",
 		"@ui5/middleware-code-coverage": "^2.0.3",
-		"eslint": "^9.9.1",
-		"eslint-plugin-jsdoc": "^50.2.2",
-		"globals": "^17.7.0",
-		"karma": "^6.4.4",
-		"karma-chrome-launcher": "^3.2.0",
-		"karma-coverage": "^2.2.1",
-		"karma-ui5": "^4.1.0",
+		"eslint": "^10.13.0",
+		"eslint-plugin-jsdoc": "^65.4.2",
+		"globals": "^17.13.0",
 		"rimraf": "^6.1.3",
-		"ui5-middleware-livereload": "^3.3.1"
+		"ui5-middleware-livereload": "^3.4.0",
+		"ui5-test-runner": "^5.14.2"
 	}
 }
